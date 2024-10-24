@@ -96,7 +96,7 @@ class Employee:  # Employee class
         return f"{self.fname} {self.lname} is working."
     
     def get_salary(self):
-        return f"{self.fname} {self.lname}'s salray is {self.salary}"
+        return f"{self.fname} {self.lname}'s salary is {self.salary}"
     
 
 #(Child class) inheriting from Employee
@@ -132,3 +132,46 @@ employee_work(mgr_1)
 
 # When employee_work() is called, it takes either an Employee or a Manager object and 
 # calls their respective work() method based on the actual type of the object. 
+
+
+# ENCAPSULATION
+# process of restricting access to certain attributes or methods in an object. 
+# we can do this by using single underscore (_) or double underscore(__).
+
+# ABSTRACTION
+# it hides complex implementation detailsns exposes the essential essential feature.
+
+class Account:
+    def __init__(self,balance):
+        self.__balance = balance   #private variable
+
+    def deposit(self,amount):
+        if amount>0:
+            self.__balance += amount
+
+    def get_balance(self):
+        return self.__balance
+
+
+account = Account(500)
+# print(account.__balance)  # not possible to access directly as it is private variable
+account.deposit(1000)
+print(account.get_balance())
+
+
+
+
+# GENERATORS
+# special  function that yeilds value one at a time ,we cn iterate over large data sets without consuming lots of memory.
+# it returns an iterator that generates item lazily.
+
+
+def countdown(n):
+    while n>0:
+        yield n  #yield pauses the function and return the value.
+        n -= 1
+
+for count in countdown(5):
+    print(count)
+
+
