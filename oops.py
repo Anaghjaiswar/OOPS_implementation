@@ -1,6 +1,6 @@
 # class , object, constructor(__init__)
 
-# class -> a class is a blueprint for creating objects(instances). class ke attributes aur methods uske sare objects ke bhi homge
+# class -> a class is a blueprint for creating objects(instances). class ke attributes aur methods uske sare objects ke bhi honge
 # object/instance -> yeh class ka part hote hai
 
 # constructor(__init__): yeh automatically call hojata hai jab ham ham kisi class ke object ko create karte hai.
@@ -175,3 +175,55 @@ for count in countdown(5):
     print(count)
 
 
+
+# LIST COMPREHENSION
+squares = [x**2 for x in range(5)]
+print (squares)
+
+
+# DICT COMPREHENSION
+squares_dict = {x:x**2 for x in range (5)}
+print(squares_dict)
+
+
+# SET COMPREHENSION
+square = {x**2 for x in range(10)}
+print(square)
+
+
+
+# HIGHER ORDER FUNCTIONS
+# a function that takes another function as a argument
+
+def add_five(x):
+    return x + 5
+
+def apply_twice(func,value):
+    return func(func(value))
+
+print(apply_twice(add_five,10))
+
+# firstly apply twice fn. will be called and it will return add_five(add_five,10)
+# then (add_five,10) will return 15. fn will become add_five(15) whichc returns 20.
+
+
+# LAMBDA FUNCTIONS
+# anonymous, inline functions for quick, throwaway operations.
+
+add = lambda x,y : x+y
+print(add(5,4))
+
+# map() --> Applies a function to all items in an input list.
+numbers = [1,2,3,4]
+squared = map(lambda x : x**2 , numbers)
+print(list(squared))
+
+# filter --> Filters elements from a list based on a condition.
+even_numbers = filter(lambda x: x%2 == 0 ,numbers)
+print(list(even_numbers))
+
+# reduce() --> cumulatively applies to function to all items, reducing the list to a single value
+
+from functools import reduce
+sum_of_numbers = reduce(lambda x,y: x+y,numbers)
+print(sum_of_numbers)
