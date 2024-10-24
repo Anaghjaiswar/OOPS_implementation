@@ -174,7 +174,28 @@ def countdown(n):
 for count in countdown(5):
     print(count)
 
+# DECORATORS --> function ke andar function banao usme agrs aur keyword arguments pass kar sakte ho ,phir badme 
+# return wrapper (andar wala function) kardo aur jis bhi func ko us function ke through pass karana chahate ho 
+# uske upar @outer_function name likh do
+# we will write a decorator that maesures the time a function takes to execute. 
 
+import time
+
+
+def timer(func):
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)  
+        end = time.time()
+        print(f"{func.__name__} ran in {end-start} time")
+        return result   
+    return wrapper
+
+@timer
+def example_function(n):
+    time.sleep(n)
+
+example_function(2)
 
 # LIST COMPREHENSION
 squares = [x**2 for x in range(5)]
